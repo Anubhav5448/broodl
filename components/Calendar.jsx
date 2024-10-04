@@ -28,18 +28,6 @@ const dayList = [
   "Saturday",
 ];
 
-const data = {
-  15: 2,
-  16: 4,
-  17: 1,
-  18: 3,
-  19: 5,
-  20: 2,
-  21: 4,
-  22: 1,
-  23: 3,
-  24: 5,
-};
 export default function Calendar(props) {
   const now = new Date();
   const currMonth = now.getMonth();
@@ -48,9 +36,20 @@ export default function Calendar(props) {
   );
   const { demo, data, handleSetMood } = props;
   const [selectedYear, setSelectedYear] = useState(now.getFullYear());
-//   const year = 2024;
-//   const month = "July";
-  const monthNow = new Date(selectedYear, Object.keys(months).indexOf(selectedMonth), 1);
+
+  function handleIncrementMonth(val) {
+    
+  }
+
+  console.log("Selected Month: ", selectedMonth);
+
+  //   const year = 2024;
+  //   const month = "July";
+  const monthNow = new Date(
+    selectedYear,
+    Object.keys(months).indexOf(selectedMonth),
+    1
+  );
   const firstDayOfMonth = monthNow.getDay();
   const daysInMonth = new Date(
     selectedYear,
