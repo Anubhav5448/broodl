@@ -22,7 +22,7 @@ export default function RootLayout({ children }) {
         </h1>
       </Link>
 
-      <div class="flex items-center justify-between">Placeholder</div>
+      <div class="flex items-center justify-between"></div>
     </header>
   );
 
