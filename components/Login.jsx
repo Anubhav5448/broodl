@@ -7,13 +7,15 @@ import { useAuth } from "@/context/AuthContext";
 const fugaz = Fugaz_One({ subsets: ["latin"], weight: ["400"] });
 
 export default function Login() {
+ 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isRegister, setIsRegister] = useState(false);
   const { signup, login } = useAuth();
-  const { authenticating, setAuthenticating } = useAuth();
+  const [authenticating, setAuthenticating] = useState(false);
 
   async function handleSubmit() {
+    
     if (!email || !password || password.length < 6) {
       return;
     }
@@ -49,13 +51,19 @@ export default function Login() {
       />
       <input
         value={password}
-        onChange
+        onChange={(e) => {
+          setPassword(e.target.value);
+        }}
         className="w-full max-w-[400px] mx-auto px-3 py-4 sm:py-3 border border-solid border-indigo-400 rounded-full outline-none duration-200 hover:border-indigo-600 "
         placeholder="Password"
         type="password"
       />
       <div className="max-w-[400px] w-full mx-auto ">
-        <Button clickHandler={handleSubmit} text={authenticating ? "Submitting" : "Submit"} full />
+        <Button
+          clickHandler={handleSubmit}
+          text={authenticating ? "Submitting" : "Submit"}
+          full
+        />
       </div>
       <p className="text-center">
         {isRegister ? "Already have an account" : "Don&apos;t have an account?"}
